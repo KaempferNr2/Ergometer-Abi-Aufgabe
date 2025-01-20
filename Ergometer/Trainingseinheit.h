@@ -1,0 +1,21 @@
+#pragma once
+#include "Benutzer.h"
+#include "Messung.h"
+class Date;
+class Trainingseinheit
+{
+	Date datum;
+	int dauer;
+	bool aktiv;
+	int maxPuls;
+	int minPuls;
+	Benutzer benutzer;
+	Messung messungen;
+public:
+	Trainingseinheit(Benutzer benutzer, int dauer);
+	void hinzufuegenMessung(Messung data);
+	Messung leseMessung(int index);
+	void berechneTrainingwerte();
+	void abbrechen();
+};
+
