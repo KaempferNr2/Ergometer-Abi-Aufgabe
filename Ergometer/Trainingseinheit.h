@@ -1,5 +1,6 @@
 #pragma once
 #include "Benutzer.h"
+#include "Date.h"
 #include "Messung.h"
 class Date;
 class Trainingseinheit
