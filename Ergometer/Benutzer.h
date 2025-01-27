@@ -2,6 +2,7 @@
 #include <string>
 
 #include "Trainingseinheit.h"
+#include <list>
 
 class Benutzer
 {
@@ -16,7 +17,7 @@ public:
 	void set_ziel_leistung(const int ziel_leistung);
 
 private:
-	Trainingseinheit einheit;
+	std::list<Trainingseinheit*> einheiten;
 	std::string name;
 	int fitnessZustand;
 	int zielLeistung;
