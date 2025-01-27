@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "Ergometer.h"
+#include "ErgometerKlasse.h"
 
 int main()
 {

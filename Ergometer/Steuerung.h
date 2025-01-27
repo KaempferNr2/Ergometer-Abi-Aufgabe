@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "Windows.h"
 #include "Benutzer.h"
 #include "ErgometerKlasse.h"
 class Steuerung
@@ -15,7 +15,7 @@ public:
 	void absolviereTrainingseiheit();
 	void absolvierePulsTraining();
 	int berechneFitnessNote();
-	void delay(long millis);
-	long currentTime();
+	static void delay(long millis);
+	static long currentTime();
 };
 

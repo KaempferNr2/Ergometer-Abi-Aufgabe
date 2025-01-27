@@ -22,6 +22,7 @@ int Steuerung::berechneFitnessNote()
 
 void Steuerung::delay(long millis)
 {
+	Sleep(millis);
 }
 
 long Steuerung::currentTime()
