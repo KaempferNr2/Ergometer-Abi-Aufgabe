@@ -2,11 +2,12 @@
 #include <string>
 
 #include "Benutzer.h"
-
+#include "ErgometerKlasse.h"
 class Steuerung
 {
-	Benutzer benutzer;
-	Trainingseinheit einheit;
+	std::list<Benutzer*> benutzer;
+	Trainingseinheit* einheit;
+	ErgometerKlasse* ergometer;
 	bool trainingGestartet();
 public:
 	Steuerung(std::string serialPort);

@@ -10,8 +10,8 @@ class Trainingseinheit
 	bool aktiv;
 	int maxPuls;
 	int minPuls;
-	Benutzer benutzer;
-	Messung messungen;
+	Benutzer* benutzer;
+	std::list<Messung*> messungen;
 public:
 	Trainingseinheit(Benutzer benutzer, int dauer);
 	void hinzufuegenMessung(Messung data);
