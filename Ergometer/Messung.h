@@ -9,6 +9,7 @@ class Messung
 	int realeLeistung;
 public:
 	Messung(std::string dataString);
+	Messung();
 	std::string toString();
 };
 
