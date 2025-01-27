@@ -5,7 +5,7 @@ Trainingseinheit::Trainingseinheit(Benutzer benutzer, int dauer)
 	this->benutzer = &benutzer;
 	this->dauer = dauer;
 	aktiv = true;
-	datum = *(new Date(1, 01, 1111));
+	datum = Date(1, 01, 1111);
 	maxPuls = 0;
 	minPuls = 0;
 }
