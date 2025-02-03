@@ -6,12 +6,12 @@
 class ErgometerKlasse
 {
 		Serial* port;
-		inline constexpr static const char* CMD_CHANGEMODE = "CMD_CHANGEMODE";
-		inline constexpr static const char* CMD_RESET = "CMD_RESET";
-		inline constexpr static const char* CMD_GET_STATUS = "CMD_GET_STATUS";
-		inline constexpr static const char* CMD_SET_POWER = "CMD_SET_POWER";
-		inline constexpr static const char* ACK = "ACK";
-		inline constexpr static const char* Error = "ERROR";
+		inline constexpr static const char* CMD_CHANGEMODE = "CMD_CHANGEMODE\n";
+		inline constexpr static const char* CMD_RESET = "CMD_RESET\n";
+		inline constexpr static const char* CMD_GET_STATUS = "CMD_GET_STATUS\n";
+		inline constexpr static const char* CMD_SET_POWER = "CMD_SET_POWER\n";
+		inline constexpr static const char* ACK = "ACK\n";
+		inline constexpr static const char* Error = "ERROR\n";
 	public:
 		ErgometerKlasse(std::string serialPort);
 		bool open();
