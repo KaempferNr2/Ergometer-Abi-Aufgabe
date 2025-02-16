@@ -49,14 +49,18 @@ Messung::Messung(std::string dataString)
 			switch (counter) {
 			case 0:
 				puls = stoi(dataString.erase(0, i));
+				break;
 			case 1:
 				umdrehungen = stoi(dataString.erase(0, i));
+				break;
 			case 2:
 				zielLeistung = stoi(dataString.erase(0, i));
+				break;
 			case 3:
 				realeLeistung = stoi(dataString.erase(0, i));
+				break;
 			default:
-				std::terminate();
+				return;
 			}
 		}
 		i++;
