@@ -17,8 +17,10 @@ void Steuerung::absolviereTrainingseiheit(Benutzer benutzer, int dauer)
 	benutzer.hinzufuegenEinheit(einheit);
 	if (benutzer.get_ziel_leistung() == 0) benutzer.set_ziel_leistung(25);
 	ergometer->reset(); // todo: ELIAS
-	while (!einheit->get_messungen().back()->get_umdrehungen())
+	ergometer->setPower(benutzer.get_ziel_leistung());
+	while (Messung(ergometer->readStatus()).get_umdrehungen() <= 0)
 	{
+		Sleep(1);
 	}
 	for (int i = 0; i < dauer * 3; i++)
 	{
@@ -41,8 +43,9 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 	ergometer->reset(); // todo: ELIAS
 	int leistung = benutzer.get_ziel_leistung();
 	ergometer->setPower(leistung); // TODO: ELiASS
-	while(!einheit->get_messungen().back()->get_umdrehungen())
+	while(Messung(ergometer->readStatus()).get_umdrehungen() <= 0)
 	{
+		Sleep(1);
 	}
 	delay(60);
 	{
