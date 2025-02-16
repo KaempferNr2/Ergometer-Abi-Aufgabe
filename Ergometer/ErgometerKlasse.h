@@ -13,8 +13,8 @@ class ErgometerKlasse
 		inline constexpr static const char* ACK = "ACK\n";
 		inline constexpr static const char* Error = "ERROR\n";
 	public:
+		ErgometerKlasse() = default;
 		ErgometerKlasse(std::string serialPort);
-		bool open();
 		bool reset();
 		bool setPower(int destPower);
 		std::string readStatus();

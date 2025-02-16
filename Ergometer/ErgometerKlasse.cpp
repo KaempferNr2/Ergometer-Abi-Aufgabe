@@ -2,12 +2,7 @@
 
 ErgometerKlasse::ErgometerKlasse(std::string serialPort)
 {
-	this->open();
-}
-
-bool ErgometerKlasse::open()
-{
-	return port->open();
+	port = new Serial(serialPort, 9600, 8, 1, 0);
 }
 
 bool ErgometerKlasse::reset()

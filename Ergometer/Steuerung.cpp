@@ -9,6 +9,7 @@ bool Steuerung::trainingGestartet()
 
 Steuerung::Steuerung(std::string serialPort)
 {
+	ergometer = new ErgometerKlasse((serialPort));
 }
 
 void Steuerung::absolviereTrainingseiheit(Benutzer benutzer, int dauer)
