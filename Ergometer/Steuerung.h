@@ -13,7 +13,7 @@ public:
 	Steuerung(std::string serialPort);
 	Benutzer sucheBenutzer(std::string name);
 	void absolviereTrainingseiheit();
-	void absolvierePulsTraining();
+	void absolvierePulsTraining(Benutzer, int, int);
 	int berechneFitnessNote();
 	static void delay(long millis);
 	static long currentTime();

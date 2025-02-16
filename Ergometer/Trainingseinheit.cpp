@@ -9,6 +9,11 @@ Trainingseinheit::Trainingseinheit(Benutzer benutzer, int dauer)
 	maxPuls = 0;
 	minPuls = 0;
 }
+Trainingseinheit::Trainingseinheit(Benutzer benutzer, int minPuls, int maxPuls)
+{
+	this->benutzer = &benutzer;
+
+}
 
 void Trainingseinheit::hinzufuegenMessung(Messung data)
 {

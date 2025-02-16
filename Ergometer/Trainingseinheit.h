@@ -14,6 +14,7 @@ class Trainingseinheit
 	std::list<Messung*> messungen;
 public:
 	Trainingseinheit(Benutzer benutzer, int dauer);
+	Trainingseinheit(Benutzer, int, int);
 	void hinzufuegenMessung(Messung data);
 	Messung leseMessung(int index);
 	void berechneTrainingwerte();
