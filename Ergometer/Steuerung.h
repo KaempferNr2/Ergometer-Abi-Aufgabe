@@ -12,7 +12,7 @@ class Steuerung
 public:
 	Steuerung(std::string serialPort);
 	Benutzer sucheBenutzer(std::string name);
-	void absolviereTrainingseiheit();
+	void absolviereTrainingseiheit(Benutzer, int);
 	void absolvierePulsTraining(Benutzer, int, int);
 	int berechneFitnessNote();
 	static void delay(long millis);

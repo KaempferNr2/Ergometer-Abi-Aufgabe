@@ -33,3 +33,8 @@ void Benutzer::set_ziel_leistung(const int ziel_leistung)
 Benutzer::Benutzer(std::string Name)
 {
 }
+
+void Benutzer::hinzufuegenEinheit(Trainingseinheit* training)
+{
+	einheiten.push_back(training);
+}

@@ -1,28 +1,94 @@
+#include "list"
 #include "Steuerung.h"
+
 
 bool Steuerung::trainingGestartet()
 {
+	return 0;
 }
 
 Steuerung::Steuerung(std::string serialPort)
 {
 }
 
-void Steuerung::absolviereTrainingseiheit()
+void Steuerung::absolviereTrainingseiheit(Benutzer benutzer, int dauer)
 {
+	einheit = new Trainingseinheit(benutzer, dauer);
+	benutzer.hinzufuegenEinheit(einheit);
+	if (benutzer.get_ziel_leistung() == 0) benutzer.set_ziel_leistung(25);
+	ergometer->reset(); // todo: ELIAS
+	while (!einheit->get_messungen().back()->get_umdrehungen())
+	{
+	}
+	for (int i = 0; i < dauer * 3; i++)
+	{
+		delay(20);
+		Messung* AktuelleMessung = new Messung(ergometer->readStatus());
+		einheit->hinzufuegenMessung(AktuelleMessung);
+	}
+	einheit->berechneTrainingwerte();
+	
+
 }
+
+
 
 void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPuls)
 {
-	benutzer.hinzufuegenEinheit(benutzer, minPuls, maxPuls);
+	einheit = new Trainingseinheit(benutzer, minPuls, maxPuls, 40);
+	benutzer.hinzufuegenEinheit(einheit);
 	if (benutzer.get_ziel_leistung() == 0) benutzer.set_ziel_leistung(25);
+	ergometer->reset(); // todo: ELIAS
+	int leistung = benutzer.get_ziel_leistung();
+	ergometer->setPower(leistung); // TODO: ELiASS
+	while(!einheit->get_messungen().back()->get_umdrehungen())
+	{
+	}
+	delay(60);
+	{
+		Messung* AktuelleMessung = new Messung(ergometer->readStatus());
+		einheit->hinzufuegenMessung(AktuelleMessung);
+		if (AktuelleMessung->get_puls() > einheit->get_max_puls())
+		{
+			leistung -= 5;
+			ergometer->setPower(leistung); // TODO: ELiASS
+		} 
+		if (AktuelleMessung->get_puls() < einheit->get_min_puls())
+		{
+			leistung += 5;
+			ergometer->setPower(leistung); // TODO: ELiASS 
+		} 
+	}
+	for(int i = 0; i < 39*3; i++)
+	{
+		delay(20);
+		Messung* AktuelleMessung = new Messung(ergometer->readStatus());
+		einheit->hinzufuegenMessung(AktuelleMessung);
+		if (AktuelleMessung->get_puls() > einheit->get_max_puls())
+		{
+			if (leistung >= 5)leistung -= 5;
+			ergometer->setPower(leistung); // TODO: ELiASS
+		}
+		if (AktuelleMessung->get_puls() < einheit->get_min_puls())
+		{
+			leistung += 5;
+			ergometer->setPower(leistung); // TODO: ELiASS
+		}
+	}
+	einheit->berechneTrainingwerte();
+	benutzer.set_ziel_leistung(leistung);
 
 }
 
 int Steuerung::berechneFitnessNote()
 {
-	if(einheit->leseMessung(40) == 0) // einige sachen sind nur temp btw
-	
+	int p1 = Messung(ergometer->readStatus()).get_puls();
+	if (p1 <= 0) return -1;
+	delay(60);
+	int p2 = Messung(ergometer->readStatus()).get_puls();
+	if (p2 > p1) return -1;
+	return 0;
+	// Formel sehr cool
 }
 
 void Steuerung::delay(long millis)
@@ -32,4 +98,5 @@ void Steuerung::delay(long millis)
 
 long Steuerung::currentTime()
 {
+	return time(nullptr);
 }

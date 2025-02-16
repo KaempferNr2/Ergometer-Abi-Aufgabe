@@ -15,7 +15,8 @@ public:
 	void set_fitness_zustand(const int fitness_zustand);
 	int get_ziel_leistung() const;
 	void set_ziel_leistung(const int ziel_leistung);
-	void hinzufuegenEinheit(const Benutzer& benutzer, int min_puls, int max_puls);
+
+	
 
 private:
 	std::list<Trainingseinheit*> einheiten;
@@ -24,6 +25,6 @@ private:
 	int zielLeistung;
 public:
 	Benutzer(std::string Name);
-	void hinzufuegenEinheit(Trainingseinheit);
+	void hinzufuegenEinheit(Trainingseinheit*);
 };
 
