@@ -2,11 +2,16 @@
 //
 
 #include <iostream>
-#include "ErgometerKlasse.h"
+#include "Steuerung.h"
+#include "Benutzer.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Steuerung steuerung("COM3");
+    Benutzer benutzer("Jonathan");
+    steuerung.absolvierePulsTraining(benutzer, 60, 120);
+    steuerung.absolviereTrainingseiheit(benutzer, 20);
+    steuerung.berechneFitnessNote();
 }
 
 // Programm ausführen: STRG+F5 oder Menüeintrag "Debuggen" > "Starten ohne Debuggen starten"
