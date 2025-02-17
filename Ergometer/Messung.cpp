@@ -1,5 +1,7 @@
 #include "Messung.h"
 
+#include <iostream>
+
 int Messung::get_puls() const
 {
 	return puls;
@@ -44,6 +46,7 @@ Messung::Messung(std::string dataString)
 {
 	int i = 0;
 	int counter = 0;
+	std::cout << dataString;
 	for (char c : dataString) {
 		if (c == ';') {
 			switch (counter) {
