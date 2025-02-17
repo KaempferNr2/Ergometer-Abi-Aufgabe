@@ -41,9 +41,9 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 	einheit = new Trainingseinheit(benutzer, minPuls, maxPuls, 40);
 	benutzer.hinzufuegenEinheit(einheit);
 	if (benutzer.get_ziel_leistung() == 0) benutzer.set_ziel_leistung(25);
-	ergometer->reset(); // todo: ELIAS
+	ergometer->reset(); 
 	int leistung = benutzer.get_ziel_leistung();
-	ergometer->setPower(leistung); // TODO: ELiASS
+	ergometer->setPower(leistung); 
 	while(Messung(ergometer->readStatus()).get_umdrehungen() <= 0)
 	{
 		Sleep(1);
@@ -55,12 +55,12 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 		if (AktuelleMessung->get_puls() > einheit->get_max_puls())
 		{
 			leistung -= 5;
-			ergometer->setPower(leistung); // TODO: ELiASS
+			ergometer->setPower(leistung); 
 		} 
 		if (AktuelleMessung->get_puls() < einheit->get_min_puls())
 		{
 			leistung += 5;
-			ergometer->setPower(leistung); // TODO: ELiASS 
+			ergometer->setPower(leistung); 
 		} 
 	}
 	for(int i = 0; i < 39*3; i++)
@@ -71,12 +71,12 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 		if (AktuelleMessung->get_puls() > einheit->get_max_puls())
 		{
 			if (leistung >= 5)leistung -= 5;
-			ergometer->setPower(leistung); // TODO: ELiASS
+			ergometer->setPower(leistung); 
 		}
 		if (AktuelleMessung->get_puls() < einheit->get_min_puls())
 		{
 			leistung += 5;
-			ergometer->setPower(leistung); // TODO: ELiASS
+			ergometer->setPower(leistung); 
 		}
 	}
 	einheit->berechneTrainingwerte();
@@ -92,7 +92,7 @@ int Steuerung::berechneFitnessNote()
 	int p2 = Messung(ergometer->readStatus()).get_puls();
 	if (p2 > p1) return -1;
 	return 0;
-	// Formel sehr cool
+	
 }
 
 void Steuerung::delay(long millis)
