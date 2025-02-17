@@ -28,10 +28,12 @@ bool ErgometerKlasse::setPower(int destPower)
 
 std::string ErgometerKlasse::readStatus()
 {
-	port->write(CMD_GET_STATUS);
-
 	std::string output = port->readLine();
-	cout << output << endl;
+	port->write(CMD_GET_STATUS);
+	do {
+		output = port->readLine();
+		cout << output << endl;
+	} while (output.length()<= 4);
 	return output;
 }
 
