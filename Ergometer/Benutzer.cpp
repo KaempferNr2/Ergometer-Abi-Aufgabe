@@ -32,6 +32,10 @@ void Benutzer::set_ziel_leistung(const int ziel_leistung)
 
 Benutzer::Benutzer(std::string Name)
 {
+
+	name = Name;
+	fitnessZustand = 0;
+	zielLeistung = 10;
 }
 
 void Benutzer::hinzufuegenEinheit(Trainingseinheit* training)

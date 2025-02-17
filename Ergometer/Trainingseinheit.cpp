@@ -84,6 +84,11 @@ Trainingseinheit::Trainingseinheit(Benutzer benutzer, int dauer)
 Trainingseinheit::Trainingseinheit(Benutzer benutzer, int minPuls, int maxPuls, int dauer)
 {
 	this->benutzer = &benutzer;
+	this->dauer = dauer;
+	aktiv = true;
+	datum = Date(1, 01, 1111);
+	this->maxPuls = maxPuls;
+	this->minPuls = minPuls;
 
 }
 
