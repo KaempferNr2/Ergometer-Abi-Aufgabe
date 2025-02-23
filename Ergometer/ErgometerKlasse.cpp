@@ -20,7 +20,7 @@ bool ErgometerKlasse::reset()
 bool ErgometerKlasse::setPower(int destPower)
 {
 	port->write(CMD_CHANGEMODE);
-	Sleep(50);
+	Sleep(25);
 	port->write(std::string(to_string(destPower)) + "\n");
 	std::string temp;
 	for (int i = 0; ((i < 100000) && (((temp = port->readLine())) != ACK)); i++) {
@@ -36,7 +36,7 @@ std::string ErgometerKlasse::readStatus()
 	std::string output;
 	port->write(CMD_GET_STATUS);
 	while (port->dataAvailable() == 0) {
-		Sleep(1000);
+		Sleep(25);
 		std::cout << "..." << std::endl;
 	};
 	system("cls");

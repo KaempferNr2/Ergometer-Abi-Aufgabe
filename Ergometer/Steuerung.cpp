@@ -26,7 +26,7 @@ void Steuerung::absolviereTrainingseiheit(Benutzer benutzer, int dauer)
 	}
 	for (int i = 0; i < dauer * 3; i++)
 	{
-		delay(20);
+		delay(10);
 		Messung* AktuelleMessung = new Messung(ergometer->readStatus());
 		einheit->hinzufuegenMessung(AktuelleMessung);
 	}
@@ -91,7 +91,7 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 	}
 	einheit->berechneTrainingwerte();
 	benutzer.set_ziel_leistung(leistung);
-	cout << "Zielleistung auf " << leistung << "gesetzt";
+	cout << "Zielleistung auf " << leistung << " gesetzt";
 
 }
 
