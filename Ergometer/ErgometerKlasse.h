@@ -10,7 +10,7 @@ class ErgometerKlasse
 		inline constexpr static const char* CMD_RESET = "CMD_RESET\n";
 		inline constexpr static const char* CMD_GET_STATUS = "CMD_GET_STATUS\n";
 		inline constexpr static const char* CMD_SET_POWER = "CMD_SET_POWER\n";
-		inline constexpr static const char* ACK = "ACK\n";
+		inline constexpr static const char* ACK = "ACK";
 		inline constexpr static const char* Error = "ERROR\n";
 	public:
 		ErgometerKlasse() = default;
@@ -18,6 +18,7 @@ class ErgometerKlasse
 		bool reset();
 		bool setPower(int destPower);
 		std::string readStatus();
+		void open();
 		void close();
 
 

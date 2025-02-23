@@ -71,7 +71,7 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 			cout << AktuelleMessung->get_puls() << endl;
 		} 
 	}
-	for(int i = 0; i < 39*3; i++)
+	for(int i = 0; i < 3*3; i++) // warum? Naja ist nicht mein code.
 	{
 		delay(20);
 		Messung* AktuelleMessung = new Messung(ergometer->readStatus());

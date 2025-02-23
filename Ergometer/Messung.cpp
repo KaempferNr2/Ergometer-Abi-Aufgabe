@@ -44,29 +44,29 @@ void Messung::set_reale_leistung(int reale_leistung)
 
 Messung::Messung(std::string dataString)
 {
-	int i = 0;
-	int counter = 0;
-	std::cout << dataString;
-	for (char c : dataString) {
-		if (c == ';') {
-			switch (counter) {
-			case 0:
-				puls = stoi(dataString.erase(0, i));
-				break;
-			case 1:
-				umdrehungen = stoi(dataString.erase(0, i));
-				break;
-			case 2:
-				zielLeistung = stoi(dataString.erase(0, i));
-				break;
-			case 3:
-				realeLeistung = stoi(dataString.erase(0, i));
-				break;
-			default:
-				return;
-			}
-		}
-		i++;
-	}
+    std::cout << dataString;
+    int counter = 0;
+    size_t pos = 0;
+    std::string temp;
+    while ((pos = dataString.find(';')) != std::string::npos) {
+        temp = dataString.substr(0, pos);
+        switch (counter) {
+        case 0:
+            puls = std::stoi(temp);
+            break;
+        case 1:
+            umdrehungen = std::stoi(temp);
+            break;
+        case 2:
+            zielLeistung = std::stoi(temp);
+            break;
+        case 3:
+            realeLeistung = std::stoi(temp);
+            break;
+        default:
+            return;
+        }
+        dataString.erase(0, pos + 1);
+        counter++;
+    }
 }
-

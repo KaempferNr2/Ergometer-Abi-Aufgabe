@@ -17,13 +17,13 @@ Serial::~Serial()
 
 // Schnittstelle öffnen
 bool Serial::open() {
-    handle = CreateFile(reinterpret_cast<LPCWSTR>(portName.c_str()),
-        GENERIC_READ | GENERIC_WRITE,
-        0,
-        0,
-        OPEN_EXISTING,
-        FILE_ATTRIBUTE_NORMAL,
-        NULL);
+    handle = CreateFileA(portName.c_str(),
+    GENERIC_READ | GENERIC_WRITE,
+    0,
+    0,
+    OPEN_EXISTING,
+    FILE_ATTRIBUTE_NORMAL,
+    NULL);
 
     if (handle == INVALID_HANDLE_VALUE)
         return (FALSE);
