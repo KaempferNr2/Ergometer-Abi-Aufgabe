@@ -20,7 +20,6 @@ private:
 	int realeLeistung;
 public:
 	Messung(std::string dataString);
-
 	std::string toString();
 };
 

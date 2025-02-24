@@ -17,7 +17,7 @@ void Steuerung::absolviereTrainingseiheit(Benutzer benutzer, int dauer)
 	einheit = new Trainingseinheit(benutzer, dauer);
 	benutzer.hinzufuegenEinheit(einheit);
 	if (benutzer.get_ziel_leistung() == 0) benutzer.set_ziel_leistung(25);
-	ergometer->reset(); // todo: ELIAS
+	ergometer->reset(); 
 	ergometer->setPower(benutzer.get_ziel_leistung());
 	
 	while (Messung(ergometer->readStatus()).get_umdrehungen() <= 0)
