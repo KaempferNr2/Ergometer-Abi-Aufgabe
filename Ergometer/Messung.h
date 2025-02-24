@@ -4,13 +4,13 @@
 class Messung
 {
 public:
-	[[nodiscard]] int get_puls() const;
+	int get_puls() const;
 	void set_puls(int puls);
-	[[nodiscard]] int get_umdrehungen() const;
+	int get_umdrehungen() const;
 	void set_umdrehungen(int umdrehungen);
-	[[nodiscard]] int get_ziel_leistung() const;
+	int get_ziel_leistung() const;
 	void set_ziel_leistung(int ziel_leistung);
-	[[nodiscard]] int get_reale_leistung() const;
+	int get_reale_leistung() const;
 	void set_reale_leistung(int reale_leistung);
 
 private:
