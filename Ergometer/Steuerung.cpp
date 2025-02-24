@@ -31,6 +31,7 @@ void Steuerung::absolviereTrainingseiheit(Benutzer benutzer, int dauer)
 		einheit->hinzufuegenMessung(AktuelleMessung);
 	}
 	einheit->berechneTrainingwerte();
+	cout << einheit->get_max_puls() << " " << einheit->get_min_puls() << endl;
 	
 
 }
@@ -45,12 +46,12 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 	ergometer->reset(); 
 	int leistung = benutzer.get_ziel_leistung();
 	ergometer->setPower(leistung); 
-	while(Messung(ergometer->readStatus()).get_umdrehungen() <= 0)
+	do
 	{
 		Sleep(1);
-		cout << Messung(ergometer->readStatus()).get_umdrehungen(); 
+		cout << Messung(ergometer->readStatus()).get_umdrehungen() << endl;
 
-	}
+	} while (Messung(ergometer->readStatus()).get_umdrehungen() <= 0);
 	cout << endl;
 	delay(60);
 	{
@@ -71,7 +72,7 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 			cout << AktuelleMessung->get_puls() << endl;
 		} 
 	}
-	for(int i = 0; i < 3*3; i++) // warum? Naja ist nicht mein code.
+	for(int i = 0; i < 39*3; i++) 
 	{
 		delay(20);
 		Messung* AktuelleMessung = new Messung(ergometer->readStatus());
@@ -80,18 +81,20 @@ void Steuerung::absolvierePulsTraining(Benutzer benutzer, int minPuls, int maxPu
 		{
 			if (leistung >= 5)leistung -= 5;
 			ergometer->setPower(leistung);
+			cout << AktuelleMessung->get_puls() << endl;
 			cout << "Power -5" << endl;
 		}
 		if (AktuelleMessung->get_puls() < einheit->get_min_puls())
 		{
 			leistung += 5;
 			ergometer->setPower(leistung);
+			cout << AktuelleMessung->get_puls() << endl;
 			cout << "Power +5" << endl;
 		}
 	}
 	einheit->berechneTrainingwerte();
 	benutzer.set_ziel_leistung(leistung);
-	cout << "Zielleistung auf " << leistung << " gesetzt";
+	cout << "Zielleistung auf " << leistung << " gesetzt" << endl;
 
 }
 

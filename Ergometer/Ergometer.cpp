@@ -12,7 +12,7 @@ int main()
     benutzer.set_ziel_leistung(100);
     std::cout << "Benutzer erstellt" << std::endl;
     Sleep(3000);
-    steuerung.absolvierePulsTraining(benutzer, 100, 180);
+    steuerung.absolvierePulsTraining(benutzer, 80, 140);
     std::cout << "pulstraining absolviert" << std::endl;
     Sleep(3000);
     steuerung.absolviereTrainingseiheit(benutzer, 20);

@@ -44,7 +44,6 @@ void Messung::set_reale_leistung(int reale_leistung)
 
 Messung::Messung(std::string dataString)
 {
-    std::cout << dataString;
     int counter = 0;
     size_t pos = 0;
     std::string temp;

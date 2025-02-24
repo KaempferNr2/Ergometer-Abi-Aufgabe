@@ -37,13 +37,12 @@ std::string ErgometerKlasse::readStatus()
 	port->write(CMD_GET_STATUS);
 	while (port->dataAvailable() == 0) {
 		Sleep(25);
-		std::cout << "..." << std::endl;
+		
 	};
-	system("cls");
+	
 	do {
 		Sleep(10);
 		output = port->readLine();
-		cout << output << endl;
 		Sleep(10);
 	} while (output.length()<= 5);
 	return output;
